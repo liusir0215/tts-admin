@@ -25,6 +25,9 @@ gulp.task('scripts', ()=> {
 		}, []);
 
 		const browserifyThis = function (bundleConfig) {
+
+			_.extend(bundleConfig, watchify.args, {debug: true});
+
 			const b = browserify(bundleConfig);
 			return b
 				.bundle()
