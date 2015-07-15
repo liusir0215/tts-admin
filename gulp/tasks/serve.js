@@ -10,7 +10,7 @@ import runSequence from "run-sequence";
 const $ = gulpLoadPlugins();
 const bs = browserSync.create();
 
-gulp.task('serve',['build'], () => {
+gulp.task('serve', ['build'], () => {
 	bs.init({
 		files: [".tmp/styles/*.css", ".tmp/scripts/*.js", ".tmp/htmls/*.html"],
 		notify: false,
@@ -45,6 +45,12 @@ gulp.task('serve',['build'], () => {
 	gulp.watch(config.images.imagesSrc, function (event, file) {
 		if (event.type === 'changed') {
 			runSequence('images', bs.reload);
+		}
+	});
+
+	gulp.watch(config.sprites.imgCurrentSrc, function (event, file) {
+		if (event.type === 'changed') {
+			runSequence('sprites', bs.reload);
 		}
 	});
 });

@@ -8,9 +8,9 @@ const test = 'test';
 
 module.exports = {
 	styles: {
-		lessSrc: app + '/styles/**/*.less',
+		lessSrc: app + '/styles/*.less',
 		lessDest: tmp + '/styles',
-		minifySrc: tmp + '/styles/**/*.css',
+		minifySrc: tmp + '/styles/*.css',
 		minifyDest: dist + '/styles'
 	},
 	images: {
@@ -27,11 +27,11 @@ module.exports = {
 	},
 	htmls: {
 		htmlsSrc: app + '/htmls/**/*.hbs',
-		htmlsTmpDest: tmp +'/htmls',
+		htmlsTmpDest: tmp + '/htmls',
 		htmlsDistDest: dist + '/htmls',
 		sharedSrc: app + '/htmls/shared'
 	},
-	templates:{
+	templates: {
 		tmplSrc: app + '/templates/**/*.hbs'
 	},
 	scripts: {
@@ -42,5 +42,11 @@ module.exports = {
 		baseDir: app + '/scripts/',
 		extensions: ['.hbs', '.jsx']
 	},
-		bower: 'bower.json'
+	sprites: {
+		imgSrc: app + '/images/sprites/**/*.png',
+		imgCurrentSrc: app + '/images/sprites',
+		imgDest: app + '/images/generated',
+		cssDest: app + '/styles/generated'
+	},
+	bower: 'bower.json'
 }
