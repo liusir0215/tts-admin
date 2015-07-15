@@ -9,12 +9,14 @@ const $ = gulpLoadPlugins();
 
 gulp.task('images', ()=> {
 	return gulp.src(config.images.imagesSrc)
+		.pipe($.plumber())
 		.pipe(gulp.dest(config.images.imagesDest))
 		.pipe($.size())
 });
 
 gulp.task('minifyImages', ['images'], () => {
 	return gulp.src(config.images.minifySrc)
+		.pipe($.plumber())
 		.pipe($.if($.if.isFile, $.cache($.imagemin({
 			progressive: true,
 			interlaced: true,

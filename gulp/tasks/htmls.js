@@ -22,6 +22,7 @@ gulp.task('html', ()=> {
 		};
 
 	return gulp.src(config.htmls.htmlsSrc)
+		.pipe($.plumber())
 		.pipe($.compileHandlebars(templateData, options))
 		.pipe($.rename(function (path) {
 			path.extname = '.html';
@@ -29,12 +30,11 @@ gulp.task('html', ()=> {
 		.pipe(gulp.dest(config.htmls.htmlsTmpDest));
 });
 
-gulp.task();
-
 gulp.task('minifyHtml', ['styles', 'html'], () => {
 	const assets = $.useref.assets({searchPath: 'app'});
 
 	return gulp.src(config.htmls.htmlsSrc)
+		.pipe($.plumber())
 		.pipe(assets)
 		.pipe($.if('*.js', $.uglify()))
 		.pipe($.if('*.css', $.minifyCss({compatibility: '*'})))

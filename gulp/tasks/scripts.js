@@ -8,11 +8,17 @@ import source from 'vinyl-source-stream';
 import globby from 'globby';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import watchify from 'watchify';
+import hbsfy from 'hbsfy';
 import _ from 'lodash-compat';
 
 const $ = gulpLoadPlugins();
 
 gulp.task('scripts', ()=> {
+
+	function handleError(err) {
+		console.log(err.toString());
+		this.emit('end');
+	}
 
 	globby(config.scripts.scriptsSrc, function (er, files) {
 		const bundleConfigs = files.reduce(function (pre, cur) {
@@ -32,6 +38,7 @@ gulp.task('scripts', ()=> {
 			const b = browserify(bundleConfig);
 			return b
 				.bundle()
+				.on('error', handleError)
 				//Pass desired output filename to vinyl-source-stream
 				.pipe(source(bundleConfig.outputName))
 				// Start piping stream to tasks!
@@ -44,6 +51,7 @@ gulp.task('scripts', ()=> {
 
 gulp.task('uglifyJs', ['scripts'], ()=> {
 	return gulp.src(config.scripts.scriptsDistSrc)
+		.pipe($.plumber())
 		.pipe($.sourcemaps.init())
 		.pipe($.uglify())
 		.pipe($.sourcemaps.write())

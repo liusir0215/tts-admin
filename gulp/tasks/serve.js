@@ -10,13 +10,14 @@ import runSequence from "run-sequence";
 const $ = gulpLoadPlugins();
 const bs = browserSync.create();
 
-gulp.task('serve', () => {
+gulp.task('serve',['build'], () => {
 	bs.init({
 		files: [".tmp/styles/*.css", ".tmp/scripts/*.js", ".tmp/htmls/*.html"],
 		notify: false,
 		port: 9000,
+		startPath: '/htmls/index.html',
 		server: {
-			baseDir: ['.tmp/htmls'],
+			baseDir: ['.tmp'],
 			routes: {
 				'/bower_components': 'bower_components'
 			}
@@ -28,7 +29,7 @@ gulp.task('serve', () => {
 		}
 	});
 
-	gulp.watch(config.scripts.scriptsSrc, function (event, file) {
+	gulp.watch([config.scripts.scriptsSrc, config.templates.tmplSrc], function (event, file) {
 		if (event.type === 'changed') {
 			runSequence('scripts', bs.reload);
 		}

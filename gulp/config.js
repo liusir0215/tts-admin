@@ -31,6 +31,9 @@ module.exports = {
 		htmlsDistDest: dist + '/htmls',
 		sharedSrc: app + '/htmls/shared'
 	},
+	templates:{
+		tmplSrc: app + '/templates/**/*.hbs'
+	},
 	scripts: {
 		scriptsSrc: app + '/scripts/**.js',
 		scriptsBrowsDest: tmp + '/scripts',
