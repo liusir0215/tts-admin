@@ -27,7 +27,7 @@ module.exports = {
 	},
 	htmls: {
 		htmlsSrc: app + '/htmls/**/*.hbs',
-		htmlsTmpDest: tmp + '/htmls',
+		htmlsTmpDest: tmp +'/htmls',
 		htmlsDistDest: dist + '/htmls',
 		sharedSrc: app + '/htmls/shared'
 	},

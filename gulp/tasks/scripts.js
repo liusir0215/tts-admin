@@ -7,6 +7,7 @@ import config from '../config';
 import source from 'vinyl-source-stream';
 import globby from 'globby';
 import gulpLoadPlugins from 'gulp-load-plugins';
+import watchify from 'watchify';
 import _ from 'lodash-compat';
 
 const $ = gulpLoadPlugins();

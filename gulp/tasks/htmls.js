@@ -29,6 +29,7 @@ gulp.task('html', ()=> {
 		.pipe(gulp.dest(config.htmls.htmlsTmpDest));
 });
 
+gulp.task();
 
 gulp.task('minifyHtml', ['styles', 'html'], () => {
 	const assets = $.useref.assets({searchPath: 'app'});

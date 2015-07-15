@@ -4,13 +4,15 @@
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
-import config from '../config'
+import config from '../config';
+import runSequence from "run-sequence";
 
 const $ = gulpLoadPlugins();
-const reload = browserSync.reload;
+const bs = browserSync.create();
 
-gulp.task('serve', ['clean', 'less', 'scripts', 'fonts', 'html', 'images'], () => {
-	browserSync({
+gulp.task('serve', () => {
+	bs.init({
+		files: [".tmp/styles/*.css", ".tmp/scripts/*.js", ".tmp/htmls/*.html"],
 		notify: false,
 		port: 9000,
 		server: {
@@ -20,18 +22,44 @@ gulp.task('serve', ['clean', 'less', 'scripts', 'fonts', 'html', 'images'], () =
 			}
 		}
 	});
+	gulp.watch(config.htmls.htmlsSrc, function (event, file) {
+		if (event.type === 'changed') {
+			runSequence('html', bs.reload);
+		}
+	});
 
-	gulp.watch([
-		config.htmls.htmlsSrc,
-		config.scripts.scriptsSrc,
-		config.images.imagesSrc,
-		config.fonts.fontChange
-	]).on('change', reload);
+	gulp.watch(config.scripts.scriptsSrc, function (event, file) {
+		if (event.type === 'changed') {
+			runSequence('scripts', bs.reload);
+		}
+	});
 
-	gulp.watch(config.styles.lessSrc, ['styles']);
-	gulp.watch(config.fonts.fontSrc, ['fonts']);
-	gulp.watch(config.bower, ['wiredep', 'fonts']);
+	gulp.watch(config.styles.lessSrc, function (event, file) {
+		if (event.type === 'changed') {
+			runSequence('less');
+			bs.reload('*.css');
+		}
+	});
+
+	gulp.watch(config.images.imagesSrc, function (event, file) {
+		if (event.type === 'changed') {
+			runSequence('images', bs.reload);
+		}
+	});
 });
+/*
+ gulp.watch([
+ config.htmls.htmlsSrc,
+ config.scripts.scriptsSrc,
+ config.images.imagesSrc,
+ config.fonts.fontChange
+ ]).on('change', bs.reload);
+
+ gulp.watch(config.styles.lessSrc, ['styles']);
+ gulp.watch(config.fonts.fontSrc, ['fonts']);
+ gulp.watch(config.bower, ['wiredep', 'fonts']);
+ });
+ */
 
 /*
  gulp.task('serve:dist', () => {
