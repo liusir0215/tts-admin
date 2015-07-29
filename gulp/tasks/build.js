@@ -5,5 +5,5 @@ import gulp from 'gulp';
 import runSequence from 'run-sequence';
 
 gulp.task('build', ()=> {
-	runSequence('clean', ['minifyHtml', 'minifyImages', 'styles', 'uglifyJs', 'fonts']);
+	runSequence('clean', ['sprites', 'minifyHtml', 'minifyImages', 'styles', 'uglifyJs', 'fonts']);
 });

@@ -10,7 +10,7 @@ import runSequence from "run-sequence";
 const $ = gulpLoadPlugins();
 const bs = browserSync.create();
 
-gulp.task('serve', ['build'], () => {
+gulp.task('serve', () => {
 	bs.init({
 		files: [".tmp/styles/*.css", ".tmp/scripts/*.js", ".tmp/htmls/*.html"],
 		notify: false,
@@ -29,13 +29,13 @@ gulp.task('serve', ['build'], () => {
 		}
 	});
 
-	gulp.watch([config.scripts.scriptsSrc, config.templates.tmplSrc], function (event, file) {
+	gulp.watch([config.scripts.scriptsWatchSrc, config.templates.tmplSrc], function (event, file) {
 		if (event.type === 'changed') {
 			runSequence('scripts', bs.reload);
 		}
 	});
 
-	gulp.watch(config.styles.lessSrc, function (event, file) {
+	gulp.watch(config.styles.lessWatchSrc, function (event, file) {
 		if (event.type === 'changed') {
 			runSequence('less');
 			bs.reload('*.css');

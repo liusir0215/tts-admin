@@ -9,6 +9,7 @@ const test = 'test';
 module.exports = {
 	styles: {
 		lessSrc: app + '/styles/*.less',
+		lessWatchSrc: app + '/styles/**/*',
 		lessDest: tmp + '/styles',
 		minifySrc: tmp + '/styles/*.css',
 		minifyDest: dist + '/styles'
@@ -36,6 +37,7 @@ module.exports = {
 	},
 	scripts: {
 		scriptsSrc: app + '/scripts/**.js',
+		scriptsWatchSrc: app + '/scripts/**/*.js',
 		scriptsBrowsDest: tmp + '/scripts',
 		scriptsDistSrc: tmp + '/scripts/**.js',
 		scriptsDistDest: dist + '/scripts',
@@ -43,7 +45,7 @@ module.exports = {
 		extensions: ['.hbs', '.jsx']
 	},
 	sprites: {
-		imgSrc: app + '/images/sprites/**/*.png',
+		imgSrc: app + '/images/sprites/**/*.{png,jpg}',
 		imgCurrentSrc: app + '/images/sprites',
 		imgDest: app + '/images/generated',
 		cssDest: app + '/styles/generated'
