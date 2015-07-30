@@ -19,6 +19,20 @@
   },
   "devDependencies": {
     "chai": "~3.0.0",
-    "mocha": "~2.2.5"
+    "mocha": "~2.2.5",
+    "datatables": "~1.10.7",
+    "datatables-plugins": "~1.10.7",
+    "flot": "~0.8.3",
+    "font-awesome": "~4.4.0",
+    "holderjs": "~2.8.1",
+    "metisMenu": "~2.0.3",
+    "morrisjs": "~0.5.1",
+    "datatables-responsive": "~1.0.6",
+    "bootstrap-social": "~4.9.1",
+    "flot.tooltip": "~0.8.5"
+  },
+  "resolutions": {
+    "mocha": "~1.17.1",
+    "font-awesome": "~4.3"
   }
 }

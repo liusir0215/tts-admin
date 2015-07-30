@@ -2,7 +2,6 @@
  * Created by liusheng on 7/15/15.
  */
 import gulp from 'gulp';
-import spritesmith from 'gulp.spritesmith';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import merge from 'merge-stream';
 import globby from 'globby';
