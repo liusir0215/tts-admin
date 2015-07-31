@@ -10,7 +10,9 @@
   {{>styles}}
 
   <!-- Morris Charts CSS -->
-  <link href="../../bower_components/morrisjs/morris.css" rel="stylesheet">
+  <!-- build:css ./../styles/morris.css -->
+  <link href="./../bower_components/morrisjs/morris.css" rel="stylesheet">
+  <!-- endbuild -->
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -132,9 +134,13 @@
 {{>scripts}}
 
 <!-- Morris Charts JavaScript -->
-<script src="../../bower_components/raphael/raphael-min.js"></script>
-<script src="../../bower_components/morrisjs/morris.min.js"></script>
-<script src="../../scripts/morris-data.js"></script>
+<!-- build:js ./../scripts/raphael-min.js -->
+<script src="./../bower_components/raphael/raphael-min.js"></script>
+<!-- endbuild -->
+<!-- build:js ./../scripts/morris.min.js -->
+<script src="./../bower_components/morrisjs/morris.min.js"></script>
+<!-- endbuild -->
+<script src="./../scripts/morris-data.js"></script>
 
 </body>
 

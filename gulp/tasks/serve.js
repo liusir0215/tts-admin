@@ -10,7 +10,7 @@ import runSequence from "run-sequence";
 const $ = gulpLoadPlugins();
 const bs = browserSync.create();
 
-gulp.task('serve', () => {
+gulp.task('serve',['sprites', 'htmls', 'minifyImages', 'styles', 'uglifyJs', 'fonts'], () => {
 	bs.init({
 		files: [".tmp/styles/*.css", ".tmp/scripts/*.js", ".tmp/htmls/*.html"],
 		notify: false,

@@ -30,7 +30,13 @@ module.exports = {
 		htmlsSrc: app + '/htmls/**/*.hbs',
 		htmlsTmpDest: tmp + '/htmls',
 		htmlsDistDest: dist + '/htmls',
-		sharedSrc: app + '/htmls/shared'
+		sharedSrc: app + '/htmls/shared',
+		jsSrc: dist + '/htmls/scripts/*.js',
+		jsDest: dist + '/scripts',
+		cssSrc: dist + '/htmls/css/*.css',
+		cssDest: dist + '/styles',
+		cssDir: dist + '/htmls/css',
+		jsDir: dist + '/htmls/scripts'
 	},
 	templates: {
 		tmplSrc: app + '/templates/**/*.hbs'

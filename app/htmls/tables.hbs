@@ -10,11 +10,14 @@
   {{>styles}}
 
   <!-- DataTables CSS -->
-  <link href="../../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
+  <!-- build:css ./../styles/dataTables.bootstrap.css -->
+  <link href="./../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
         rel="stylesheet">
-
+  <!-- endbuild -->
   <!-- DataTables Responsive CSS -->
-  <link href="../../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+  <!-- build:css ./../styles/dataTables.responsive.css -->
+  <link href="./../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+  <!-- endbuild -->
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -790,8 +793,12 @@
 {{>scripts}}
 
 <!-- DataTables JavaScript -->
-<script src="../../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="../../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+<!-- build:js ./../scripts/jquery.dataTables.min.js -->
+<script src="./../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<!-- endbuild -->
+<!-- build:js ./../scripts/dataTables.bootstrap.min.js -->
+<script src="./../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+<!-- endbuild -->
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
