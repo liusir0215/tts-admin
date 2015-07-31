@@ -4,5 +4,6 @@
 import tpl from '../../templates/waiting.hbs';
 export default {
 	string: 'string',
-	template: tpl({list: '123'})
+	template: tpl({list: '123'}),
+	test: 'taotaosou'
 }
